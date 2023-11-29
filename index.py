@@ -26,6 +26,18 @@ def cut_gif(gif_path, from_frame, to_frame, output_path):
     except subprocess.CalledProcessError as e:
         messagebox.showerror("Error", f"Error cutting GIF: {e}")
 
+def open_with_file_manager(file_path):
+    """ Open a file with the default file manager. """
+    try:
+        if os.name == 'posix':  # for Unix-like OS
+            subprocess.run(['xdg-open', file_path])
+        elif os.name == 'nt':  # for Windows
+            os.startfile(file_path)
+        else:
+            messagebox.showwarning("Unsupported OS", "This feature is not supported on your operating system.")
+    except Exception as e:
+        messagebox.showerror("Error", f"Error opening file manager: {e}")
+
 def upload_gif():
     file_path = filedialog.askopenfilename(filetypes=[("GIF files", "*.gif")])
     if file_path:
@@ -34,6 +46,7 @@ def upload_gif():
             to_frame_entry.delete(0, tk.END)
             to_frame_entry.insert(0, str(total_frames - How_many_frames_to_subtract_from_the_total_number))
         uploaded_gif.set(file_path)
+        open_with_file_manager(file_path)
 
 def process_gif():
     try:
@@ -45,6 +58,7 @@ def process_gif():
             output_file = os.path.join(gif_directory, new_filename)
             cut_gif(uploaded_gif.get(), from_frame, to_frame, output_file)
             messagebox.showinfo("Success", f"GIF cut successfully: {output_file}")
+            open_with_file_manager(output_file)  # Open the result GIF with file manager
     except ValueError:
         messagebox.showerror("Error", "Please enter valid frame numbers.")
 
