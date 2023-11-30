@@ -18,3 +18,19 @@ sudo apt-get install nautilus
 
 ## How To Add Python Script to Nautilus Scripts
 ![Functionality](https://github.com/pefbrute/GIF-Duration-Cutter/blob/main/How%20To%20Add%20Script%20to%20Nautilus%20Scripts.gif)
+
+1. Перейти В Папку Nautilus Scripts
+```
+nautilus ~/.local/share/nautilus/scripts
+```
+2. Создать питон скрипт, например, gif-cutter2.py
+```
+touch gif-cutter2.py
+```
+
+4. Внести в него код (он находится в gif-cutter-using-nautilus.py)
+
+5. Сделать файл исполняемым
+```
+sudo chmod +x gif-cutter2.py
+```
