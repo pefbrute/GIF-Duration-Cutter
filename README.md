@@ -6,3 +6,11 @@ Crop GIFs easily with my new project! If you've seen my past work, you know I lo
 
 ## Application variation using nautilus
 ![GIF Cutter (Nautilus Variation)](https://github.com/pefbrute/GIF-Duration-Cutter/blob/main/cut_How%20GIF%20Cutter%20(Nautilus%20Variation)%20Works.gif)
+
+## Installation
+```
+sudo apt install python3
+sudo apt-get install python3-tk
+sudo apt-get install gifsicle
+sudo apt-get install nautilus
+```
